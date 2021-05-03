@@ -31,18 +31,26 @@ export function NewTransactionModal({ isOpen, onRequestClose }: NewTransactionMo
       type
     });
 
+    clearFields();
+    onRequestClose();
+  }
+
+  function handleRequestClose() {
+    clearFields();
+    onRequestClose();
+  }
+
+  function clearFields() {
     setTitle('');
     setAmount(0);
     setType('deposit');
     setCategory('');
-
-    onRequestClose();
   }
 
   return (
     <Modal
       isOpen={isOpen}
-      onRequestClose={onRequestClose}
+      onRequestClose={handleRequestClose}
       overlayClassName="react-modal-overlay"
       className="react-modal-content"
     >
